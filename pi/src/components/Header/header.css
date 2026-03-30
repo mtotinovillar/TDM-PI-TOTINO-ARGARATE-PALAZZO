@@ -1,0 +1,12 @@
+.container {
+    width: 100%;
+    padding-right: 0px 15px 0px 15px;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+
+.container h1{
+    font-weight: 500;
+    font-size: 40px;
+}

@@ -33,8 +33,14 @@ function Menu() {
         <nav>
         <ul className="main-nav">
             {
-                elementos.map((elemento, idx) => <li key={elemento + idx} className="nav-item">
-                    <Link to={elemento.path}>{elemento.name}</Link></li>)
+                elementos.map((elemento, idx) => (
+                    <li
+                        key={elemento.name + idx}
+                        className={elemento.name === "Registro" ? "nav-item ml-auto" : "nav-item"}
+                    >
+                        <Link to={elemento.path}>{elemento.name}</Link>
+                    </li>
+                ))
             }
         </ul>
         </nav>
