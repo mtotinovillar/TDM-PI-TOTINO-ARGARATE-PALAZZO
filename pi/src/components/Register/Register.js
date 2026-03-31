@@ -6,7 +6,6 @@ class Register extends Component {
     this.state = {
         email: "",
         password: "",
-        usuario: "",
         error: "",
         aprobado:""
     };
@@ -63,6 +62,12 @@ class Register extends Component {
     usuarios.push(agregarUsuario)
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
 
+    this.setState({
+        email: "",
+        password: "",
+        aprobado: "Usuario registrado correctamente"
+    })
+
   }
 
   guardarCambios(event) {
@@ -76,14 +81,6 @@ class Register extends Component {
         <div>
             <p>Registrarse</p>
             <form onSubmit={(event)=>this.evitarSubmit(event)}>
-
-                <label>Usuario: </label>
-                <input
-                    type="text"
-                    name="usuario"
-                    value={this.state.usuario}
-                    onChange={(event) => this.guardarCambios(event)}
-                />
 
                 <label>Email: </label>
                 <input
@@ -103,6 +100,7 @@ class Register extends Component {
 
                 <button type="submit">Registrarse</button>
             </form>
+
         </div>
      
     );
