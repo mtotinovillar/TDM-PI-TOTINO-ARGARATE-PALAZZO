@@ -10,10 +10,10 @@ class Peliculas extends Component{
         }
     }
 
-    ComponentDidMount() {
+    componentDidMount() {
     fetch (this.state.urlApi)
     .then(response => response.json())
-    .then (data => setState({
+    .then (data => this.setState({
         datos: data.results
 
     }))
