@@ -16,7 +16,7 @@ class Register extends Component {
 
     let { email, password } = this.state;
 
-    // limpiar mensajes anteriores
+    
     this.setState({
     error: "",
     aprobado: "",
@@ -70,13 +70,20 @@ class Register extends Component {
 
   }
 
-  guardarCambios(event) {
-  this.setState({
-    [event.target.name]: event.target.value
-  });
-}
+    guardarEmail(event) {
+    this.setState({
+        email: event.target.value
+    });
+    }
 
-  render() {
+    guardarPassword(event) {
+    this.setState({
+        password: event.target.value
+    });
+    }
+
+
+    render() {
     return (
         <div>
             <p>Registrarse</p>
@@ -87,7 +94,7 @@ class Register extends Component {
                     type="email"
                     name="email"
                     value={this.state.email}
-                    onChange={(event) => this.guardarCambios(event)}
+                    onChange={(event) => this.guardarEmail(event)}
                 />
 
                 <label>Contraseña: </label>
@@ -95,7 +102,7 @@ class Register extends Component {
                     type="password"
                     name="password"
                     value={this.state.password}
-                    onChange={(event) => this.guardarCambios(event)}
+                    onChange={(event) => this.guardarPassword(event)}
                 />
 
                 <button type="submit">Registrarse</button>
