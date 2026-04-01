@@ -3,7 +3,9 @@ import React, {Component} from "react";
 class Formulario extends Component {
   constructor(props) {
     super(props);
-    this.state = {valor: ''};
+    this.state = {
+        busqueda: ""
+    };
   }
 
   evitarSubmit(event) {
@@ -11,15 +13,22 @@ class Formulario extends Component {
   }
 
   controlarCambios(event) {
-    this.setState({valor: event.target.value});
+    this.setState({
+        busqueda: event.target.value
+    });
   }
 
   render() {
     return (
      <form onSubmit={(event)=>this.evitarSubmit(event)}>
-       <label>Name:</label>
-       <input type="text" onChange={(event)=>this.controlarCambios(event)} value={this.state.valor} />
-       <input type="submit" value="Submit" />
+       <label>Buscar:</label>
+       <input 
+        type="text" 
+        name= "busqueda" 
+        value={this.state.busqueda} 
+        onChange={(event)=>this.controlarCambios(event)} 
+        />
+       <button type="submit">Buscar</button>
      </form>
     );
   }
