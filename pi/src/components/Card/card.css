@@ -78,3 +78,43 @@ p {
     border-radius: .25rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+
+.btn-descripcion {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  .btn-descripcion:hover {
+    background-color: #586166;
+  }
+
+  .titulo-favorito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .titulo-favorito .card-title {
+    margin: 0;
+  }
+  
+  .favorito {
+    background-color: transparent;
+    border: none;
+    font-size: 22px;
+    color: #999;
+    padding: 0;
+    margin: 0;
+  }
+
+  .favorito:hover {
+    color: #ff0000;
+  }

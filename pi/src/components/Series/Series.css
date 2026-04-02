@@ -1,0 +1,23 @@
+.cards {
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2%;
+  }
+  
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  .titulo-series {
+    background-color: #efe6bf;
+    color: #8a6d1d;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+
+  }
