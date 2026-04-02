@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./card.css";
+import {Route, Link} from 'react-router-dom';
 
 class Card extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Card extends Component {
                 <div className="cardBody">
                     <h5 className="card-title">{this.props.titulo}</h5>
                     <p className = "card-text">{this.props.descripcion}</p> 
-                    <button className="btn btn-primary" onClick={() => this.mostrarInfo}>Ver más</button>
+                    <Link to={`/Detalle/${this.props.id}`} className="btn btn-primary">Ver más</Link>
                 </div>
             </article>
         );
@@ -30,6 +31,5 @@ export default Card;
 
 /*
 falta: 
-Link o botón “ir a detalle” para navegar hasta la página de detalle del elemento.
 Link, botón o ícono "agregar / quitar de favoritos", solamente disponible si la cookie de sesión existe.
 */

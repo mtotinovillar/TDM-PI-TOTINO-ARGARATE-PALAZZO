@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer"
 import Home from "./Screens/Home/Home";
-import Detalles from "./Screens/Detalles/Detalles";
+import Detalle from "./Screens/Detalle/Detalle";
 import Favoritos from "./Screens/Favoritos/Favoritos";
 import Log_in from "./Screens/Log_in/Log_in";
 import Registro from "./Screens/Registro/Registro";
@@ -20,6 +20,7 @@ function App() {
           <Route path="/" exact={true} component={Home} />
           <Route path="/Register" component={Registro} />
           <Route path="/Login" component={Log_in} />
+          <Route path="/Detalle/:id" component={Detalle} />
         </Switch>
       </div>
 
