@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import './buscador.css';
 
 class Formulario extends Component {
   constructor(props) {
@@ -20,15 +21,15 @@ class Formulario extends Component {
 
   render() {
     return (
-     <form onSubmit={(event)=>this.evitarSubmit(event)}>
-       <label>Buscar:</label>
+     <form className= "search-form" onSubmit={(event)=>this.evitarSubmit(event)}>
        <input 
         type="text" 
         name= "busqueda" 
+        placeholder ="Buscar..."
         value={this.state.busqueda} 
         onChange={(event)=>this.controlarCambios(event)} 
         />
-       <button type="submit">Buscar</button>
+       <button class="btn btn-success btn-sm" type="submit">Buscar</button>
      </form>
     );
   }

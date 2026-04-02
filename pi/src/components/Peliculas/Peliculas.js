@@ -1,11 +1,12 @@
 import React, {Component} from "react";
-import Card from "../Card/Card"
+import Card from "../Card/Card";
+import "./peliculas.css";
 
 class Peliculas extends Component{
     constructor(props){
         super(props)
         this.state = {
-            datos: "",
+            datos: [],
             urlApi: "https://api.themoviedb.org/3/movie/popular?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d"
         }
     }
@@ -26,8 +27,8 @@ class Peliculas extends Component{
             <div>
                 <h2 className = "alert alert-primary"> Popular movies this week</h2>
                 <section className = "row cards" id = "movies">
-                    {this.state.datos === "" ? <h3> Cargando...</h3> : this.state.datos.map(
-                            ((movie) => (
+                    {this.state.datos.length === 0 ? <h3> Cargando...</h3> : this.state.datos.filter((movie, i) => i < 4).map(
+                        (movie) => (
                             <Card
                                 key = {movie.id}
                                 imagen = {movie.poster_path}
@@ -35,8 +36,6 @@ class Peliculas extends Component{
                                 descripcion = {movie.overview}
                                 id = {movie.id}
                             />))
-
-                        )
                     }
                 </section>
             </div>
