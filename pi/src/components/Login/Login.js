@@ -68,7 +68,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <p>Login</p>
+         <p>Iniciar sesión</p>
         <form onSubmit={(event) => this.evitarSubmit(event)}>
 
           <label>Email: </label>

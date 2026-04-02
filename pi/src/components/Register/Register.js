@@ -86,7 +86,7 @@ class Register extends Component {
     render() {
     return (
         <div>
-            <p>Registrarse</p>
+            <p>Registro</p>
             <form onSubmit={(event)=>this.evitarSubmit(event)}>
 
                 <label>Email: </label>
