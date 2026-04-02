@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Card from "../Card/Card";
 import "./peliculas.css";
+import { Link } from "react-router-dom";
 
 class Peliculas extends Component{
     constructor(props){
@@ -25,7 +26,11 @@ class Peliculas extends Component{
     render() {
         return(
             <div>
+                <div className="titulo-peliculas">
                 <h2 className = "alert alert-primary"> Popular movies this week</h2>
+                <Link to="/Peliculas" className="ver-todas">Ver todas las películas</Link>
+                </div>
+
                 <section className = "row cards" id = "movies">
                     {this.state.datos.length === 0 ? <h3> Cargando...</h3> : this.state.datos.filter((movie, i) => i < 4).map(
                         (movie) => (
