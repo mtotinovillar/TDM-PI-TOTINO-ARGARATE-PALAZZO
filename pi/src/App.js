@@ -4,8 +4,8 @@ import Footer from "./components/Footer/Footer"
 import Home from "./Screens/Home/Home";
 import Detalle from "./Screens/Detalle/Detalle";
 import Favoritos from "./Screens/Favoritos/Favoritos";
-import Log_in from "./Screens/Log_in/Log_in";
-import Registro from "./Screens/Registro/Registro";
+import Log_in from "./Screens/Login/Login";
+import Registro from "./Screens/Register/Register";
 import Series from "./Screens/Series/Series";
 import NotFound from "./Screens/NotFound/NotFound";
 import { Route, Link, Switch } from 'react-router-dom';

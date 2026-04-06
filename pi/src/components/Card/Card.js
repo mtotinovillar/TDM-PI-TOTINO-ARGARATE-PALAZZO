@@ -26,7 +26,7 @@ class Card extends Component {
                 <div className="cardBody">
                     <div className="titulo-favorito">
                         <h5 className="card-title">{this.props.titulo}</h5>
-                        <Favs/>
+                        <Favs id={this.props.id}/>
                     </div>
 
                     {this.state.verMas ? <p className="descripcion">{this.props.descripcion}</p> : ""}
@@ -46,7 +46,3 @@ class Card extends Component {
 export default Card;
 
 
-/*
-falta: 
-Link, botón o ícono "agregar / quitar de favoritos", solamente disponible si la cookie de sesión existe.
-*/

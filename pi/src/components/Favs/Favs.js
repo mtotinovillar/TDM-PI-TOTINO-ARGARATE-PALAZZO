@@ -10,6 +10,8 @@ class Favs extends Component {
   }
 
   agregarFav(id) {
+
+    
     let storage = localStorage.getItem("favPelis");
     let storageParseado = JSON.parse(storage);
 
@@ -26,10 +28,30 @@ class Favs extends Component {
     this.setState({ esFav: true });
   }
 
+  sacarFav(id) {
+    let storage = localStorage.getItem("favPelis");
+    let storageParseado = JSON.parse(storage);
+
+    if (storageParseado !== null) {
+      let storageFiltrado = storageParseado.filter(elemento => elemento !== id);
+      let storageString = JSON.stringify(storageFiltrado);
+      localStorage.setItem("favPelis", storageString);
+    }
+
+    this.setState({ esFav: false });
+  }
+
   render() {
     return (
       <div>
-        <button className= "favorito" onClick={() => this.agregarFav(this.props.id)}>
+        <button
+          className={this.state.esFav ? "favorito activo" : "favorito"}
+          onClick={() =>
+            this.state.esFav
+              ? this.sacarFav(this.props.id)
+              : this.agregarFav(this.props.id)
+          }
+        >
           ♥
         </button>
       </div>
