@@ -1,0 +1,13 @@
+.favorito{
+    background-color: transparent;
+    border: none;
+    font-size: 22px;
+    color: #999;
+    padding: 0;
+    margin: 0;
+}
+
+.favorito:hover {
+    color: #ff0000;
+  
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./card.css";
 import { Route, Link } from 'react-router-dom';
+import Favs from "../Favs/Favs";
 
 class Card extends Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class Card extends Component {
                 <div className="cardBody">
                     <div className="titulo-favorito">
                         <h5 className="card-title">{this.props.titulo}</h5>
-                        <button className="favorito">♥</button>
+                        <Favs/>
                     </div>
 
                     {this.state.verMas ? <p className="descripcion">{this.props.descripcion}</p> : ""}

@@ -87,27 +87,31 @@ class Register extends Component {
 
     render() {
     return (
-        <div>
-            <p>Registro</p>
+        <div className="form-group">
+            <h2>Registro</h2>
             <form onSubmit={(event)=>this.evitarSubmit(event)}>
 
-                <label>Email: </label>
+                <label className="email">Email: </label>
                 <input
+                    className="form-control"
                     type="email"
                     name="email"
+                    placeholder = "Ingresa tu mail"
                     value={this.state.email}
                     onChange={(event) => this.guardarEmail(event)}
                 />
 
-                <label>Contraseña: </label>
+                <label className="password">Contraseña: </label>
                 <input
+                    className="form-control"
                     type="password"
                     name="password"
+                    placeholder = "Ingresa tu contraseña"
                     value={this.state.password}
                     onChange={(event) => this.guardarPassword(event)}
                 />
 
-                <button type="submit">Registrarse</button>
+                <button className = "btn btn-primary btn-block" type="submit">Registrarse</button>
             </form>
 
         </div>

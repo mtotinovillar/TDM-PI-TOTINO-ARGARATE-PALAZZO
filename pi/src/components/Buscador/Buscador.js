@@ -32,7 +32,7 @@ class Buscador extends Component {
         value={this.state.search} 
         onChange={(event)=>this.controlarCambios(event)} 
         />
-       <button className="btn" type="submit">Buscar</button>
+       <button className="btn btn-primary btn-block" type="submit">Buscar</button>
      </form>
     );
   }
