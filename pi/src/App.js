@@ -9,6 +9,7 @@ import Registro from "./Screens/Registro/Registro";
 import Series from "./Screens/Series/Series";
 import NotFound from "./Screens/NotFound/NotFound";
 import { Route, Link, Switch } from 'react-router-dom';
+import Resultados from './Screens/Resultados/Resultado';
 
 function App() {
   return (
@@ -18,9 +19,10 @@ function App() {
 
         <Switch>
           <Route path="/" exact={true} component={Home} />
-          <Route path="/Register" component={Registro} />
-          <Route path="/Login" component={Log_in} />
-          <Route path="/Detalle/:tipo/:id" component={Detalle} />
+          <Route path="/register" component={Registro} />
+          <Route path="/login" component={Log_in} />
+          <Route path="/detalle/:tipo/:id" component={Detalle} />
+          <Route path = "/busqueda/:busqueda" component={Resultados}/>
         </Switch>
       </div>
 
