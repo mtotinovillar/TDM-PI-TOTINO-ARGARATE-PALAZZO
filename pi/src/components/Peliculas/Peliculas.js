@@ -40,6 +40,7 @@ class Peliculas extends Component{
                                 titulo = {movie.title}
                                 descripcion = {movie.overview}
                                 id = {movie.id}
+                                tipo = "movie"
                             />))
                     }
                 </section>

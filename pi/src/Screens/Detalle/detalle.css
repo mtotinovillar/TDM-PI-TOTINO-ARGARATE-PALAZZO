@@ -42,10 +42,8 @@ h3 {
     margin: 10px 0; 
     unicode-bidi: isolate;
 }
-p {
-    display: block;
-    margin: 2px 0; 
-    unicode-bidi: isolate;
-    margin-top: 0;
+.genero {
+
 }
+
 

@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import Card from "../Card/Card";
-import "./Series.css";
+import "./series.css";
 import { Link } from "react-router-dom";
 
-class Peliculas extends Component{
+class Series extends Component{
     constructor(props){
         super(props)
         this.state = {
             datos: [],
-            urlApi: "https://api.themoviedb.org/3/tv/popular?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d"
+            urlApi: "https://api.themoviedb.org/3/trending/tv/week?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d"
         }
     }
 
@@ -39,6 +39,7 @@ class Peliculas extends Component{
                                 titulo = {movie.name}
                                 descripcion = {movie.overview}
                                 id = {movie.id}
+                                tipo = "tv"
                             />))
                     }
                 </section>
@@ -50,5 +51,5 @@ class Peliculas extends Component{
 
 
 
-export default Peliculas
+export default Series
 

@@ -33,7 +33,7 @@ class Card extends Component {
                     <button className="btn-descripcion" onClick={() => this.mostrarInfo()}>
                         {this.state.verMas ? "Ocultar descripción" : "Ver descripción"}
                     </button>
-                    <Link to={`/Detalle/${this.props.id}`} className="btn btn-primary">Ir a detalle</Link>
+                    <Link to={`/Detalle/${this.props.tipo}/${this.props.id}`} className="btn btn-primary">Ir a detalle</Link>
                 </div>
             </article>
         );
