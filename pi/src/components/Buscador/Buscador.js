@@ -18,7 +18,7 @@ class Buscador extends Component {
   controlarCambios(event) {
     this.setState(
       {search: event.target.value},
-      () => console.log('log desde el setState extendidos:',this.setState.search)
+      () => console.log('state:',this.state.search)
       );
   }
 
@@ -32,7 +32,7 @@ class Buscador extends Component {
         value={this.state.search} 
         onChange={(event)=>this.controlarCambios(event)} 
         />
-       <button className="btn btn-success btn-sm" type="submit">Buscar</button>
+       <button className="btn" type="submit">Buscar</button>
      </form>
     );
   }
