@@ -61,6 +61,8 @@ class Register extends Component {
 
     usuarios.push(agregarUsuario)
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
+    console.log("guardado:", localStorage.getItem("usuarios"))
+
 
     this.setState({
         email: "",
