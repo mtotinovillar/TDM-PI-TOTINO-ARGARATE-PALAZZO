@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Favs from "../../components/Favs/Favs"
 
 
 class Detalle extends Component {
@@ -60,7 +61,10 @@ class Detalle extends Component {
                                     i === 0 ? genero.name : ", " + genero.name
                                 )}
                             </p>
-
+                            <div className="favoritos-container">
+                                <span><strong>Agregar a favoritos: </strong></span>
+                                <Favs />
+                            </div>
                         </section>
                     </section>
 

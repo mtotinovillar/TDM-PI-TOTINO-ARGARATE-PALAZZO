@@ -43,7 +43,6 @@ class Favs extends Component {
 
   render() {
     return (
-      <div>
         <button
           className={this.state.esFav ? "favorito activo" : "favorito"}
           onClick={() =>
@@ -54,7 +53,6 @@ class Favs extends Component {
         >
           ♥
         </button>
-      </div>
     );
   }
 }

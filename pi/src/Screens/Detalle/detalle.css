@@ -43,4 +43,9 @@ h3 {
     unicode-bidi: isolate;
 }
 
+.favoritos-container {
+    display: flex;
+    align-items: center; 
+    margin-right: 10px; 
+}
 

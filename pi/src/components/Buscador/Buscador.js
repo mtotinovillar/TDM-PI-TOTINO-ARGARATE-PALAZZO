@@ -6,13 +6,14 @@ class Buscador extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        search: ""
+        search: "",
+        tipo: "movie"
     };
   }
 
   evitarSubmit(event) {
     event.preventDefault()
-    this.props.history.push(`/busqueda/${this.state.search}`)
+    this.props.history.push(`/busqueda/${this.state.tipo}/${this.state.search}`)
   }
 
   controlarCambios(event) {
@@ -32,7 +33,11 @@ class Buscador extends Component {
         value={this.state.search} 
         onChange={(event)=>this.controlarCambios(event)} 
         />
-       <button className="btn btn-primary btn-block" type="submit">Buscar</button>
+        <select onChange = {(event)=> this.setState({tipo: event.target.value})}>
+          <option value= "movie">Películas</option>
+          <option value= "tv">Series</option>
+        </select>
+       <button className="btn btn-success btn-block" type="submit">Buscar</button>
      </form>
     );
   }
