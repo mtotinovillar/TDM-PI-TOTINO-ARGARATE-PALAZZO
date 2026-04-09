@@ -23,6 +23,7 @@ function App() {
           <Route path="/login" component={Log_in} />
           <Route path="/detalle/:tipo/:id" component={Detalle} />
           <Route path = "/busqueda/:tipo/:busqueda" component={Resultados}/>
+          <Route path = "/favoritos" component={Favoritos}/>
         </Switch>
       </div>
 

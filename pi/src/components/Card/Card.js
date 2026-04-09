@@ -26,7 +26,7 @@ class Card extends Component {
                 <div className="cardBody">
                     <div className="titulo-favorito">
                         <h5 className="card-title">{this.props.titulo}</h5>
-                        <Favs id={this.props.id}/>
+                        <Favs id={this.props.id} tipo={this.props.tipo}/>
                     </div>
 
                     {this.state.verMas ? <p className="descripcion">{this.props.descripcion}</p> : ""}
