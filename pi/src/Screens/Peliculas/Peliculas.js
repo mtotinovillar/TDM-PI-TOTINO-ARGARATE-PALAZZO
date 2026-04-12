@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Card from "../../components/Card/Card";
-import { Route, Link } from 'react-router-dom';
 import "./peliculas.css";
 
 
@@ -63,6 +62,7 @@ class Peliculas extends Component {
                                 titulo={movie.title}
                                 descripcion={movie.overview}
                                 id={movie.id}
+                                tipo = "movie"
                             />
 
                         ))

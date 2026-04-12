@@ -25,7 +25,8 @@ function App() {
           <Route path="/detalle/:tipo/:id" component={Detalle} />
           <Route path = "/busqueda/:tipo/:busqueda" component={Resultados}/>
           <Route path = "/favoritos" component={Favoritos}/>
-          <Route path = "/peliculas" component = {Peliculas}/>
+          <Route path = "/Peliculas" component = {Peliculas}/>
+          <Route path = "/Series" component = {Series}/>
         </Switch>
       </div>
 

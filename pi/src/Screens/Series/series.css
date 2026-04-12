@@ -1,0 +1,30 @@
+.cargarMasss {
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.cargarMasss:hover {
+    background-color: #907f17;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 2px;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
