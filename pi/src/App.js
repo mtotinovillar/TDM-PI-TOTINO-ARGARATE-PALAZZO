@@ -6,6 +6,7 @@ import Detalle from "./Screens/Detalle/Detalle";
 import Favoritos from "./Screens/Favoritos/Favoritos";
 import Log_in from "./Screens/Login/Login";
 import Registro from "./Screens/Register/Register";
+import Peliculas from "./Screens/Peliculas/Peliculas";
 import Series from "./Screens/Series/Series";
 import NotFound from "./Screens/NotFound/NotFound";
 import { Route, Link, Switch } from 'react-router-dom';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/detalle/:tipo/:id" component={Detalle} />
           <Route path = "/busqueda/:tipo/:busqueda" component={Resultados}/>
           <Route path = "/favoritos" component={Favoritos}/>
+          <Route path = "/peliculas" component = {Peliculas}/>
         </Switch>
       </div>
 
