@@ -50,7 +50,7 @@ class Series extends Component {
                     />
                 </form>
 
-                <button onClick={this.cargarMas} className="cargarMasss">Cargar más </button>
+               
 
                 <section className="row cards" >
                     {this.state.datos.length === 0 ?
@@ -64,9 +64,14 @@ class Series extends Component {
                                 tipo = "tv"
                             />
 
+                            
+
                         ))
+
+                        
                     }
                 </section>
+                <button onClick={this.cargarMas} className="cargarMasss">Cargar más </button>
             </div>
         )
     }

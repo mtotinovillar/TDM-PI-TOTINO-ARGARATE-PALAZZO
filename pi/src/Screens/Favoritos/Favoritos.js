@@ -18,33 +18,37 @@ class Favoritos extends Component {
         let pelisParseadas = pelisStorage ? JSON.parse(pelisStorage) : [];
         let seriesParseadas = seriesStorage ? JSON.parse(seriesStorage) : [];
 
+        const peliculasFav = [];
+
         pelisParseadas.map(id =>
             fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d`)
                 .then(response => response.json())
                 .then(data => {
-                    let copiaPeliculas = [];
+                    // let copiaPeliculas = [];
 
-                    this.state.peliculasFav.map(pelicula => copiaPeliculas.push(pelicula));
-                    copiaPeliculas.push(data);
+                    // this.state.peliculasFav.map(pelicula => copiaPeliculas.push(pelicula));
+                    peliculasFav.push(data);
 
                     this.setState({
-                        peliculasFav: copiaPeliculas
+                        peliculasFav: peliculasFav
                     });
                 })
                 .catch(error => console.log(error))
         );
 
+        const seriesFav = [];
+
         seriesParseadas.map(id =>
             fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d`)
                 .then(response => response.json())
                 .then(data => {
-                    let copiaSeries = [];
+                    // let copiaSeries = [];
 
-                    this.state.seriesFav.map(serie => copiaSeries.push(serie));
-                    copiaSeries.push(data);
+                    // this.state.seriesFav.map(serie => copiaSeries.push(serie));
+                    seriesFav.push(data);
 
                     this.setState({
-                        seriesFav: copiaSeries
+                        seriesFav: seriesFav
                     });
                 })
                 .catch(error => console.log(error))

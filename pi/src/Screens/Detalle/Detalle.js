@@ -7,7 +7,7 @@ class Detalle extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            id: this.props.match.params.id,
+            id: Number(this.props.match.params.id),
             tipo: this.props.match.params.tipo,
             datos: ''
         }

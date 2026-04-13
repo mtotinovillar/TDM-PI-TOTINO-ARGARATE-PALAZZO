@@ -50,7 +50,7 @@ class Peliculas extends Component {
                     />
                 </form>
 
-                <button onClick={this.cargarMas} className="cargarMas">Cargar más </button>
+                
 
                 <section className="row cards" >
                     {this.state.datos.length === 0 ?
@@ -68,6 +68,9 @@ class Peliculas extends Component {
                         ))
                     }
                 </section>
+
+                <button onClick={this.cargarMas} className="cargarMas">Cargar más </button>
+                
             </div>
         )
     }
