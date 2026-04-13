@@ -1,22 +1,35 @@
 import React, { Component } from "react";
 import Favs from "../../components/Favs/Favs";
 import Card from "../../components/Card/Card";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 class Favoritos extends Component {
     constructor(props) {
         super(props);
         this.state = {
             peliculasFav: [],
-            seriesFav: []
+            seriesFav: [],
+            autorizado: false
         };
     }
 
     componentDidMount() {
+        let sesion = cookies.get("user-auth-cookie");
+
+        if (!sesion) {
+            this.props.history.push("/login");
+            return;
+        }
+
         let pelisStorage = localStorage.getItem("favPelis");
         let seriesStorage = localStorage.getItem("favSeries");
 
         let pelisParseadas = pelisStorage ? JSON.parse(pelisStorage) : [];
         let seriesParseadas = seriesStorage ? JSON.parse(seriesStorage) : [];
+
+        this.setState({autorizado: true});
 
         const peliculasFav = [];
 
@@ -24,7 +37,7 @@ class Favoritos extends Component {
             fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d`)
                 .then(response => response.json())
                 .then(data => {
-                    
+
                     peliculasFav.push(data);
 
                     this.setState({
@@ -40,7 +53,7 @@ class Favoritos extends Component {
             fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d`)
                 .then(response => response.json())
                 .then(data => {
-                    
+
                     seriesFav.push(data);
 
                     this.setState({
@@ -52,6 +65,7 @@ class Favoritos extends Component {
     }
 
     render() {
+       
         return (
             <div>
                 <h2>Películas favoritas</h2>

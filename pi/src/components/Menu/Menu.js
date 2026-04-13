@@ -1,33 +1,26 @@
 import React from "react";
 import './menu.css';
 import {Link} from 'react-router-dom';
-
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 function Menu() {
-    let elementos = [{
-        name: "Home",
-        path: "/"
-    },
-    {
-        name: "Películas",
-        path: "/Peliculas"
-    },
-    {
-        name: "Series",
-        path: "/Series"
-    },
-     {
-        name: "Favoritas",
-        path: "/Favoritos"
-    },
- {
-        name: "Registro",
-        path: "/Register"
-    },
- {
-        name: "Login",
-        path: "/Login"
-    }];
+    let sesion = cookies.get("user-auth-cookie");
+
+    let elementos = [
+        {name: "Home", path: "/"},
+        {name: "Películas", path: "/Peliculas"},
+        {name: "Series", path: "/Series"}
+    ];
+
+    if (sesion){
+        elementos.push({name:"Favoritas", path:"/Favoritas"});
+    } else {
+        elementos.push(
+            {name:"Registro", path: "/register"},
+            {name: "Login", path: "/login"}
+        );
+    }
 
     return (
         <nav>
@@ -36,7 +29,9 @@ function Menu() {
                 elementos.map((elemento, idx) => (
                     <li
                         key={elemento.name + idx}
-                        className={elemento.name === "Registro" ? "nav-item ml-auto" : "nav-item"}
+                        className={
+                            elemento.name === "Registro" || elemento.name == "Login"
+                            ? "nav-item ml-auto" : "nav-item"}
                     >
                         <Link to={elemento.path}>{elemento.name}</Link>
                     </li>

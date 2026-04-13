@@ -67,11 +67,6 @@ class Register extends Component {
         this.props.history.push("/login");
     }
 
-
-
-    
-
-
     render() {
         return (
             <div className="form-group">
