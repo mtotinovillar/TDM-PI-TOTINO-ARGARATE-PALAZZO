@@ -63,7 +63,7 @@ class Detalle extends Component {
                             </p>
                             <div className="favoritos-container">
                                 <span><strong>Agregar a favoritos: </strong></span>
-                                <Favs />
+                                <Favs id={this.state.id} tipo={this.state.tipo} />
                             </div>
                         </section>
                     </section>

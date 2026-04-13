@@ -15,7 +15,7 @@ class Favs extends Component {
   let storageParseado = JSON.parse(storage);
 
   if (storageParseado !== null) {
-    let existe = storageParseado.filter(elemento => elemento === this.props.id);
+    let existe = storageParseado.filter(elemento => elemento == (this.props.id));
 
     if (existe.length > 0) {
       this.setState({
@@ -26,30 +26,32 @@ class Favs extends Component {
 }
 
   agregarFav(id) {
-    let storage = localStorage.getItem("favPelis");
+    let clave = this.props.tipo === "movie" ? "favPelis" : "favSeries";
+    let storage = localStorage.getItem(clave);
     let storageParseado = JSON.parse(storage);
 
     if (storageParseado === null) {
       let primerValor = [id];
       let primerValorString = JSON.stringify(primerValor);
-      localStorage.setItem("favPelis", primerValorString);
+      localStorage.setItem(clave, primerValorString);
     } else {
       storageParseado.push(id);
       let storageString = JSON.stringify(storageParseado);
-      localStorage.setItem("favPelis", storageString);
+      localStorage.setItem(clave, storageString);
     }
 
     this.setState({ esFav: true });
   }
 
   sacarFav(id) {
-    let storage = localStorage.getItem("favPelis");
+    let clave = this.props.tipo === "movie" ? "favPelis" : "favSeries";
+    let storage = localStorage.getItem(clave);
     let storageParseado = JSON.parse(storage);
 
     if (storageParseado !== null) {
       let storageFiltrado = storageParseado.filter(elemento => elemento !== id);
       let storageString = JSON.stringify(storageFiltrado);
-      localStorage.setItem("favPelis", storageString);
+      localStorage.setItem(clave, storageString);
     }
 
     this.setState({ esFav: false });
