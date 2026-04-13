@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "../../components/Card/Card";
 import "./peliculas.css";
+import Filtro from "../../components/Filtro/Filtro";
 
 
 class Peliculas extends Component {
@@ -8,15 +9,26 @@ class Peliculas extends Component {
         super(props)
         this.state = {
             datos: [],
+            backup: [],
             page: 1
         }
     }
+
+    filtrarCard(texto) {
+        const datosFiltrados = this.state.backup.filter((elemento) =>
+            elemento.title.toLowerCase().includes(texto.toLowerCase())
+        )
+
+        this.setState({ datos: datosFiltrados })
+    }
+
     componentDidMount() {
         fetch('https://api.themoviedb.org/3/discover/movie?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d&page=1')
             .then(response => response.json())
             .then(data => this.setState(
                 {
                     datos: data.results,
+                    backup: data.results
                 }
             ))
             .catch(error => console.log(error));
@@ -28,6 +40,7 @@ class Peliculas extends Component {
             .then(data => this.setState(
                 {
                     datos: this.state.datos.concat(data.results),
+                    backup: this.state.datos.concat(data.results),
                     page: nuevaPage
                 }
             ))
@@ -40,15 +53,7 @@ class Peliculas extends Component {
             <div >
                 <h2 className="alert alert-primary">Todas las películas</h2>
 
-                <form className="filter-form px-0 mb-3" onSubmit={(event) => this.evitarSubmit(event)}>
-                    <input
-                        type="text"
-                        name="busqueda"
-                        placeholder="Buscar dentro de la lista"
-                        value={this.state.search}
-                        onChange={(event) => this.controlarCambios(event)}
-                    />
-                </form>
+                <Filtro tipo="movie" filtrarCard={(texto) => this.filtrarCard(texto)} />
 
                 
 

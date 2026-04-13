@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "../../components/Card/Card";
 import "./series.css";
+import Filtro from "../../components/Filtro/Filtro";
 
 
 class Series extends Component {
@@ -8,6 +9,7 @@ class Series extends Component {
         super(props)
         this.state = {
             datos: [],
+            backup: [],
             page: 1
         }
     }
@@ -17,6 +19,7 @@ class Series extends Component {
             .then(data => this.setState(
                 {
                     datos: data.results,
+                    backup: data.results
                 }
             ))
             .catch(error => console.log(error));
@@ -28,6 +31,7 @@ class Series extends Component {
             .then(data => this.setState(
                 {
                     datos: this.state.datos.concat(data.results),
+                    backup: this.state.backup.concat(data.results),
                     page: nuevaPage
                 }
             ))
@@ -35,22 +39,21 @@ class Series extends Component {
 
     }
 
+    filtrarCard(texto) {
+        const datosFiltrados = this.state.backup.filter((elemento) =>
+            elemento.name.toLowerCase().includes(texto.toLowerCase())
+        )
+
+        this.setState({ datos: datosFiltrados })
+    }
+
     render() {
         return (
             <div >
                 <h2 className="alert alert-warning">Todas las series</h2>
 
-                <form className="filter-form px-0 mb-3" onSubmit={(event) => this.evitarSubmit(event)}>
-                    <input
-                        type="text"
-                        name="busqueda"
-                        placeholder="Buscar dentro de la lista"
-                        value={this.state.search}
-                        onChange={(event) => this.controlarCambios(event)}
-                    />
-                </form>
 
-               
+               <Filtro tipo="tv" filtrarCard={(texto) => this.filtrarCard(texto)} />
 
                 <section className="row cards" >
                     {this.state.datos.length === 0 ?
