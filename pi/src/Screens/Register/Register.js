@@ -1,114 +1,110 @@
 import React, { Component } from "react";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            userName:"",
             email: "",
             password: "",
             error: "",
-            aprobado: ""
         };
     }
 
-    evitarSubmit(event) {
+    controlarCambios = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    submit = (event) => {
         event.preventDefault();
 
-        let { email, password } = this.state;
+        let  user = {
+            email: this.state.email,
+            password: this.state.password,
 
+        };
 
-        this.setState({
-            error: "",
-            aprobado: "",
-        })
-
-        if (email === "" || password === "") {
-            this.setState({
-                error: "Todos los campos son obligatorios"
-            })
-            return
-        }
-
-        if (password.length < 6) {
-            this.setState({
-                error: "La contraseña debe tener al menos 6 caracteres"
-            })
-            return
-        }
-
-        let usuariosGuardados = localStorage.getItem("usuarios")
-        let usuarios = usuariosGuardados ? JSON.parse(usuariosGuardados) : []
-
-        let usuarioExistente = usuarios.filter(function (usuario) {
-            return usuario.email === email;
-        });
-
-        if (usuarioExistente.length > 0) {
-            this.setState({
-                error: "Este email ya está registrado"
-            });
+        if (this.state.password.length < 6) {
+            this.setState({ error: "La contraseña tener mínimo 6 caracteres" })
             return;
+        };
+
+        let usersStorage = localStorage.getItem("users");
+
+        if (usersStorage !== null) {
+
+            let usersParseado = JSON.parse(usersStorage);
+
+            let usersFiltrado = usersParseado.filter(user => user.email === this.state.email);
+
+            if (usersFiltrado.length > 0) {
+                this.setState({ error: "Ya existe un usuario con el email ingresado" })
+                return;
+            }
+
+            usersParseado.push(user);
+
+            let usersEnJson = JSON.stringify(usersParseado);
+
+            localStorage.setItem("users", usersEnJson);
+
+        } else {
+
+            let usersInicial = [user];
+
+            let usersEnJson = JSON.stringify(usersInicial);
+
+            localStorage.setItem("users", usersEnJson)
+        
         }
 
-        let agregarUsuario = {
-            email: email,
-            password: password
-        }
-
-        usuarios.push(agregarUsuario)
-        localStorage.setItem("usuarios", JSON.stringify(usuarios))
-        console.log("guardado:", localStorage.getItem("usuarios"))
-
-
-        this.setState({
-            email: "",
-            password: "",
-            aprobado: "Usuario registrado correctamente"
-        })
-
+        cookies.set("user-auth-cookie", this.state.email);
+        this.props.history.push("/login");
     }
 
-    guardarEmail(event) {
-        this.setState({
-            email: event.target.value
-        });
-    }
 
-    guardarPassword(event) {
-        this.setState({
-            password: event.target.value
-        });
-    }
+
+    
 
 
     render() {
         return (
             <div className="form-group">
-                <h2>Registro</h2>
-                <form onSubmit={(event) => this.evitarSubmit(event)}>
+                <h2>Register</h2>
 
-                    <label className="email">Email: </label>
+                <form onSubmit={this.submit}>
+
                     <input
-                        className="form-control"
-                        type="email"
+                        type="text"
                         name="email"
-                        placeholder="Ingresa tu mail"
+                        placeholder="Email"
                         value={this.state.email}
-                        onChange={(event) => this.guardarEmail(event)}
+                        onChange={this.controlarCambios}
                     />
 
-                    <label className="password">Contraseña: </label>
                     <input
-                        className="form-control"
                         type="password"
                         name="password"
-                        placeholder="Ingresa tu contraseña"
+                        placeholder="Password"
                         value={this.state.password}
-                        onChange={(event) => this.guardarPassword(event)}
+                        onChange={this.controlarCambios}
                     />
 
-                    <button className="btn btn-primary btn-block" type="submit">Registrarse</button>
+                    <button type="submit">Registrarse</button>
+
+                    {this.state.error !== "" ?
+                        <p>{this.state.error}</p>
+                        :
+                        null
+                    }
+
                 </form>
+                
 
             </div>
 

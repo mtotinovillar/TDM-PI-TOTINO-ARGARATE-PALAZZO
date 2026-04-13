@@ -24,9 +24,7 @@ class Favoritos extends Component {
             fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d`)
                 .then(response => response.json())
                 .then(data => {
-                    // let copiaPeliculas = [];
-
-                    // this.state.peliculasFav.map(pelicula => copiaPeliculas.push(pelicula));
+                    
                     peliculasFav.push(data);
 
                     this.setState({
@@ -42,9 +40,7 @@ class Favoritos extends Component {
             fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d`)
                 .then(response => response.json())
                 .then(data => {
-                    // let copiaSeries = [];
-
-                    // this.state.seriesFav.map(serie => copiaSeries.push(serie));
+                    
                     seriesFav.push(data);
 
                     this.setState({
