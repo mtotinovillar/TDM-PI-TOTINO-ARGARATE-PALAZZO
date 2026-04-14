@@ -27,6 +27,7 @@ function App() {
           <Route path = "/favoritos" component={Favoritos}/>
           <Route path = "/Peliculas" component = {Peliculas}/>
           <Route path = "/Series" component = {Series}/>
+          <Route component={NotFound} />
         </Switch>
       </div>
 

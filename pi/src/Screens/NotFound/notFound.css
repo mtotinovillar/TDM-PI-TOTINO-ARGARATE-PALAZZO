@@ -1,0 +1,38 @@
+.notfound {
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.notfound-titulo {
+    font-size: 80px;
+    margin: 0;
+   
+}
+
+.notfound-subtitulo {
+    margin: 10px 0;
+}
+
+.notfound-texto {
+    margin: 10px 0 20px 0;
+}
+
+.notfound-link {
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 1px solid black;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.notfound-link:hover {
+    background-color: rgba(132, 24, 24, 0.254);
+    text-decoration: none;
+    color: red;
+    border: 1px solid red;
+}
