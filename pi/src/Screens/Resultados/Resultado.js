@@ -5,7 +5,8 @@ class Resultados extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            resultados: []
+            resultados: [],
+            cargando: true
         };
     }
     componentDidMount() {
@@ -15,9 +16,16 @@ class Resultados extends Component {
         fetch(`https://api.themoviedb.org/3/search/${tipo}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d&query=${query}`)
             .then(response => response.json())
             .then(data => this.setState({
-                resultados: data.results
+                resultados: data.results,
+                cargando: false
             }))
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                this.setState({
+                    cargando: false,
+                    resultados: []
+                })
+            })
     }
     render() {
         return (
@@ -25,9 +33,9 @@ class Resultados extends Component {
                 <h2>Resultados de: {this.props.match.params.busqueda}</h2>
 
                 <section className="row cards">
-                    {this.state.resultados.length === 0 ? (
+                    {this.state.cargando ? (
                         <h3>Cargando...</h3>
-                    ) : (
+                    ) : this.state.resultados.length > 0 ? (
                         this.state.resultados.map((item, i) => (
                             <Card
                                 key={i}
@@ -38,6 +46,8 @@ class Resultados extends Component {
                                 tipo={this.props.match.params.tipo}
                             />
                         ))
+                    ) : (
+                        <h3>No se encontraron resultados para "{this.props.match.params.busqueda}"</h3>
                     )}
                 </section>
 

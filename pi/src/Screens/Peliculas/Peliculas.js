@@ -10,16 +10,20 @@ class Peliculas extends Component {
         this.state = {
             datos: [],
             backup: [],
-            page: 1
+            page: 1,
+            noResultados: false
         }
     }
 
     filtrarCard(texto) {
         const datosFiltrados = this.state.backup.filter((elemento) =>
             elemento.title.toLowerCase().includes(texto.toLowerCase())
+
         )
 
-        this.setState({ datos: datosFiltrados })
+        this.setState({ 
+            datos: datosFiltrados, noResultados: datosFiltrados.length === 0
+        })
     }
 
     componentDidMount() {
@@ -58,8 +62,9 @@ class Peliculas extends Component {
                 
 
                 <section className="row cards" >
-                    {this.state.datos.length === 0 ?
-                        <h3>Cargando...</h3> :
+                    {this.state.noResultados ? ( 
+                        <h3>No hay resultados</h3> 
+                    ): ( 
                         this.state.datos.map((movie) => (
 
                             <Card
@@ -69,9 +74,9 @@ class Peliculas extends Component {
                                 id={movie.id}
                                 tipo = "movie"
                             />
-
+                            
                         ))
-                    }
+                    )}
                 </section>
 
                 <button onClick={this.cargarMas} className="cargarMas">Cargar más </button>

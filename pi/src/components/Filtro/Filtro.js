@@ -6,7 +6,8 @@ class Filtro extends Component {
         super(props);
         this.state = {
             verMas: false,
-            search: ""
+            search: [],
+            noResultados: false
         };
     }
 

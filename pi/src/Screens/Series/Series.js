@@ -10,7 +10,8 @@ class Series extends Component {
         this.state = {
             datos: [],
             backup: [],
-            page: 1
+            page: 1,
+            noResultados: false
         }
     }
     componentDidMount() {
@@ -44,7 +45,9 @@ class Series extends Component {
             elemento.name.toLowerCase().includes(texto.toLowerCase())
         )
 
-        this.setState({ datos: datosFiltrados })
+        this.setState({
+            datos: datosFiltrados, noResultados: datosFiltrados.length === 0
+        })
     }
 
     render() {
@@ -56,9 +59,11 @@ class Series extends Component {
                <Filtro tipo="tv" filtrarCard={(texto) => this.filtrarCard(texto)} />
 
                 <section className="row cards" >
-                    {this.state.datos.length === 0 ?
-                        <h3>Cargando...</h3> :
+                {this.state.noResultados ? ( 
+                        <h3>No hay resultados</h3> 
+                    ): ( 
                         this.state.datos.map((serie) => (
+
                             <Card
                                 imagen={serie.poster_path}
                                 titulo={serie.name}
@@ -67,12 +72,10 @@ class Series extends Component {
                                 tipo = "tv"
                             />
 
-                            
-
                         ))
 
                         
-                    }
+                    )}
                 </section>
                 <button onClick={this.cargarMas} className="cargarMasss">Cargar más </button>
             </div>
