@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cookies from "universal-cookie";
+import { withRouter } from "react-router-dom";
 
 const cookies = new Cookies();
 
@@ -12,6 +13,10 @@ class Login extends Component {
       error: "",
       aprobado: ""
     };
+  }
+
+  componentDidMount(){
+    console.log('props login', this.props)
   }
 
   controlarCambios = (event) => {
@@ -48,10 +53,10 @@ class Login extends Component {
       password: ""
     });
 
+    this.props.actualizarSesion(true)
     this.props.history.push("/");
 
   }
-
 
   render() {
     return (
@@ -94,4 +99,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

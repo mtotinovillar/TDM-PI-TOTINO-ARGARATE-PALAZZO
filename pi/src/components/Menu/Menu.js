@@ -1,44 +1,45 @@
 import React from "react";
 import './menu.css';
-import {Link} from 'react-router-dom';
-import Cookies from "universal-cookie";
-const cookies = new Cookies();
+import { Link } from 'react-router-dom';
 
-function Menu() {
-    let sesion = cookies.get("user-auth-cookie");
+function Menu(props) {
 
     let elementos = [
-        {name: "Home", path: "/"},
-        {name: "Películas", path: "/Peliculas"},
-        {name: "Series", path: "/Series"}
+        { name: "Home", path: "/" },
+        { name: "Películas", path: "/Peliculas" },
+        { name: "Series", path: "/Series" }
     ];
 
-    if (sesion){
-        elementos.push({name:"Favoritas", path:"/Favoritas"});
+    if (props.sesion) {
+        elementos.push({ name: "Favoritas", path: "/favoritos" });
+        console.log("sesion:", props.sesion);
     } else {
         elementos.push(
-            {name:"Registro", path: "/register"},
-            {name: "Login", path: "/login"}
+            { name: "Registro", path: "/register" },
+            { name: "Login", path: "/login" }
         );
     }
 
     return (
         <nav>
-        <ul className="main-nav">
-            {
-                elementos.map((elemento, idx) => (
-                    <li
-                        key={elemento.name + idx}
-                        className={
-                            elemento.name === "Registro" || elemento.name == "Login"
-                            ? "nav-item ml-auto" : "nav-item"}
-                    >
-                        <Link to={elemento.path}>{elemento.name}</Link>
-                    </li>
-                ))
-            }
-        </ul>
+            <ul className="main-nav">
+                {
+                    elementos.map((elemento, idx) => (
+                        <li
+                            key={elemento.name + idx}
+                            className={
+                                elemento.name === "Registro" || elemento.name === "Login"
+                                    ? "nav-item ml-auto"
+                                    : "nav-item"
+                            }
+                        >
+                            <Link to={elemento.path}>{elemento.name}</Link>
+                        </li>
+                    ))
+                }
+            </ul>
         </nav>
-    )
+    );
 }
-export default Menu
+
+export default Menu;

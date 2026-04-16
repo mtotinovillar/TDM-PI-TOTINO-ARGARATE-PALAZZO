@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
 
 class Register extends Component {
     constructor(props) {
@@ -63,7 +61,6 @@ class Register extends Component {
         
         }
 
-        cookies.set("user-auth-cookie", this.state.email);
         this.props.history.push("/login");
     }
 
