@@ -12,6 +12,11 @@ class Header extends Component {
         };
     }
     componentDidMount(){
+        let sesion = cookies.get("user-auth-cookie");
+
+        this.setState({
+            sesion: sesion
+        })
         console.log('header didMount')
     }
 

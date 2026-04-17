@@ -11,7 +11,10 @@ function Menu(props) {
     ];
 
     if (props.sesion) {
-        elementos.push({ name: "Favoritas", path: "/favoritos" });
+        elementos.push(
+            { name: "Favoritas", path: "/favoritos" },
+            { name: "Logout", path: "/logout" });
+
         console.log("sesion:", props.sesion);
     } else {
         elementos.push(
@@ -28,7 +31,7 @@ function Menu(props) {
                         <li
                             key={elemento.name + idx}
                             className={
-                                elemento.name === "Registro" || elemento.name === "Login"
+                                elemento.name === "Registro" || elemento.name === "Login" || elemento.name === "Logout"
                                     ? "nav-item ml-auto"
                                     : "nav-item"
                             }

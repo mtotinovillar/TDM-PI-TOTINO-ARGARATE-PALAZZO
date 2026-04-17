@@ -8,6 +8,7 @@ import Log_in from "./Screens/Login/Login";
 import Registro from "./Screens/Register/Register";
 import Peliculas from "./Screens/Peliculas/Peliculas";
 import Series from "./Screens/Series/Series";
+import Logout from "./Screens/Logout/Logout";
 import NotFound from "./Screens/NotFound/NotFound";
 import { Route, Link, Switch } from 'react-router-dom';
 import Resultados from './Screens/Resultados/Resultado';
@@ -41,6 +42,7 @@ class App extends Component {
             <Route path = "/favoritos" component={Favoritos}/>
             <Route path = "/Peliculas" component = {Peliculas}/>
             <Route path = "/Series" component = {Series}/>
+            <Route path="/logout" component={Logout} />
             <Route component={NotFound} />
           </Switch>
         </div>
