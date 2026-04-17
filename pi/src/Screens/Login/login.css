@@ -20,11 +20,6 @@ form {
     margin-left: -15px;
 }
 
-.col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-}
-
 .form-control {
     display: block;
     width: 100%;
@@ -39,8 +34,6 @@ form {
     border: 1px solid #ced4da;
     border-radius: .25rem;
 }
-
-
 
 .btn-block {
     display: block;
@@ -69,7 +62,6 @@ form {
     text-align: center !important;
 }
 
-.mt-3,
 .my-3 {
     margin-top: 1rem !important;
 }

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Menu from "../Menu/Menu";
 import Cookies from "universal-cookie";
 
@@ -11,7 +11,7 @@ class Header extends Component {
             sesion: cookies.get("user-auth-cookie")
         };
     }
-    componentDidMount(){
+    componentDidMount() {
         let sesion = cookies.get("user-auth-cookie");
 
         this.setState({

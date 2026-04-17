@@ -21,7 +21,7 @@ class Peliculas extends Component {
 
         )
 
-        this.setState({ 
+        this.setState({
             datos: datosFiltrados, noResultados: datosFiltrados.length === 0
         })
     }
@@ -59,12 +59,12 @@ class Peliculas extends Component {
 
                 <Filtro tipo="movie" filtrarCard={(texto) => this.filtrarCard(texto)} />
 
-                
+
 
                 <section className="row cards" >
-                    {this.state.noResultados ? ( 
-                        <h3>No hay resultados</h3> 
-                    ): ( 
+                    {this.state.noResultados ? (
+                        <h3>No hay resultados</h3>
+                    ) : (
                         this.state.datos.map((movie) => (
 
                             <Card
@@ -72,15 +72,15 @@ class Peliculas extends Component {
                                 titulo={movie.title}
                                 descripcion={movie.overview}
                                 id={movie.id}
-                                tipo = "movie"
+                                tipo="movie"
                             />
-                            
+
                         ))
                     )}
                 </section>
 
                 <button onClick={this.cargarMas} className="cargarMas">Cargar más </button>
-                
+
             </div>
         )
     }

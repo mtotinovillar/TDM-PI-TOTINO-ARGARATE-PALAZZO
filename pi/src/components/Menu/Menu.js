@@ -31,7 +31,7 @@ function Menu(props) {
                         <li
                             key={elemento.name + idx}
                             className={
-                                elemento.name === "Registro" || elemento.name === "Login" || elemento.name === "Logout"
+                                elemento.name === "Registro" || elemento.name === "Logout"
                                     ? "nav-item ml-auto"
                                     : "nav-item"
                             }

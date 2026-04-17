@@ -29,7 +29,7 @@ class Favoritos extends Component {
         let pelisParseadas = pelisStorage ? JSON.parse(pelisStorage) : [];
         let seriesParseadas = seriesStorage ? JSON.parse(seriesStorage) : [];
 
-        this.setState({autorizado: true});
+        this.setState({ autorizado: true });
 
         const peliculasFav = [];
 
@@ -65,7 +65,7 @@ class Favoritos extends Component {
     }
 
     render() {
-       
+
         return (
             <div>
                 <h2>Películas favoritas</h2>

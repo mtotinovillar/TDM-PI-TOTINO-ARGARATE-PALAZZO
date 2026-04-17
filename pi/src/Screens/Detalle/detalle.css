@@ -3,6 +3,7 @@
     background-color: #cce5ff;
     border-color: #b8daff;
 }
+
 .alert {
     position: relative;
     padding: .75rem 1.25rem;
@@ -10,11 +11,13 @@
     border: 1px solid transparent;
     border-radius: .25rem;
 }
+
 h2 {
     font-size: 2rem;
     font-weight: 500;
     line-height: 1.2;
 }
+
 .row {
     display: -ms-flexbox;
     display: flex;
@@ -23,29 +26,32 @@ h2 {
     margin-right: -15px;
     margin-left: -15px;
 }
+
 section {
     unicode-bidi: isolate;
 }
-.col-md-6{
+
+.col-md-6 {
     position: relative;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
 }
+
 img {
     vertical-align: middle;
     border-style: none;
     overflow: clip;
 }
+
 h3 {
     display: block;
-    margin: 10px 0; 
+    margin: 10px 0;
     unicode-bidi: isolate;
 }
 
 .favoritos-container {
     display: flex;
-    align-items: center; 
-    margin-right: 10px; 
+    align-items: center;
+    margin-right: 10px;
 }
-

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-
-
+import { Link } from "react-router-dom";
+import "./register.css"
 class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName:"",
+            userName: "",
             email: "",
             password: "",
             error: "",
@@ -21,7 +21,7 @@ class Register extends Component {
     submit = (event) => {
         event.preventDefault();
 
-        let  user = {
+        let user = {
             email: this.state.email,
             password: this.state.password,
 
@@ -58,7 +58,7 @@ class Register extends Component {
             let usersEnJson = JSON.stringify(usersInicial);
 
             localStorage.setItem("users", usersEnJson)
-        
+
         }
 
         this.props.history.push("/login");
@@ -66,38 +66,50 @@ class Register extends Component {
 
     render() {
         return (
-            <div className="form-group">
-                <h2>Register</h2>
+            <div>
+                <div>
+                    <h2 className="alert alert-primary">Registrarse</h2>
+                </div>
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
+                        <form onSubmit={this.submit} >
+                            <div className="form-group">
+                                <label for="email">Email</label>
 
-                <form onSubmit={this.submit}>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    name="email"
+                                    placeholder="Ingresá tu email"
+                                    value={this.state.email}
+                                    onChange={this.controlarCambios}
+                                />
+                            </div>
 
-                    <input
-                        type="text"
-                        name="email"
-                        placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.controlarCambios}
-                    />
+                            <div className="form-group">
+                                <label for="password">Contraseña</label>
+                                <input
+                                    className="form-control"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Ingresá tu contraseña"
+                                    value={this.state.password}
+                                    onChange={this.controlarCambios}
+                                />
+                            </div>
+                            <button className="btn btn-primary btn-block" type="submit">Registrarse</button>
 
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.controlarCambios}
-                    />
-
-                    <button type="submit">Registrarse</button>
-
-                    {this.state.error !== "" ?
-                        <p>{this.state.error}</p>
-                        :
-                        null
-                    }
-
-                </form>
-                
-
+                            {this.state.error !== "" ?
+                                <p>{this.state.error}</p>
+                                :
+                                null
+                            }
+                        </form>
+                        <p className="mt-3 text-center">¿Ya tenés cuenta?
+                            <Link to="/login" className="link">Iniciar sesión</Link>
+                        </p>
+                    </div>
+                </div>
             </div>
 
         );

@@ -56,12 +56,12 @@ class Series extends Component {
                 <h2 className="alert alert-warning">Todas las series</h2>
 
 
-               <Filtro tipo="tv" filtrarCard={(texto) => this.filtrarCard(texto)} />
+                <Filtro tipo="tv" filtrarCard={(texto) => this.filtrarCard(texto)} />
 
                 <section className="row cards" >
-                {this.state.noResultados ? ( 
-                        <h3>No hay resultados</h3> 
-                    ): ( 
+                    {this.state.noResultados ? (
+                        <h3>No hay resultados</h3>
+                    ) : (
                         this.state.datos.map((serie) => (
 
                             <Card
@@ -69,12 +69,12 @@ class Series extends Component {
                                 titulo={serie.name}
                                 descripcion={serie.overview}
                                 id={serie.id}
-                                tipo = "tv"
+                                tipo="tv"
                             />
 
                         ))
 
-                        
+
                     )}
                 </section>
                 <button onClick={this.cargarMas} className="cargarMasss">Cargar más </button>
