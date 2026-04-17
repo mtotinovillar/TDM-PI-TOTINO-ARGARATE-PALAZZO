@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Favs from "../../components/Favs/Favs";
+import Favs from "../../components/Favs/Favs"
 import Card from "../../components/Card/Card";
 import Cookies from "universal-cookie";
 

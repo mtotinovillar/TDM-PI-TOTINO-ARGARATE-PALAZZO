@@ -1,0 +1,11 @@
+.favorito {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: gray;
+    cursor: pointer;
+}
+
+.favorito.activo {
+    color: red;
+}
