@@ -74,7 +74,7 @@ class Register extends Component {
                     <div className="col-md-6">
                         <form onSubmit={this.submit} >
                             <div className="form-group">
-                                <label for="email">Email</label>
+                                <label className="email">Email</label>
 
                                 <input
                                     className="form-control"
@@ -87,7 +87,7 @@ class Register extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label for="password">Contraseña</label>
+                                <label className="password">Contraseña</label>
                                 <input
                                     className="form-control"
                                     type="password"

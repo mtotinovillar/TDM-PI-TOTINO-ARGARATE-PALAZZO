@@ -69,7 +69,7 @@ class Login extends Component {
           <div className="col-md-6">
             <form onSubmit={this.onSubmit} >
               <div className="form-group">
-                <label for="email">Email</label>
+                <label className="email">Email</label>
                 <input
                   className="form-control"
                   type="text"
@@ -80,7 +80,7 @@ class Login extends Component {
                 />
               </div>
               <div className="form-group">
-                <label for="password">Contraseña</label>
+                <label className="password">Contraseña</label>
                 <input
                   className="form-control"
                   type="password"
