@@ -21,7 +21,7 @@ article {
 
 div {
     display: block;
-} 
+}
 
 h5 {
     display: block;
@@ -96,7 +96,7 @@ p {
         margin-right: 2%;
     }
 
-    .single-card-movie img{
+    .single-card-movie img {
         height: auto;
     }
 

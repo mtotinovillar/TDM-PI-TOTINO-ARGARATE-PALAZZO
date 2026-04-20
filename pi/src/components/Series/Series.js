@@ -1,10 +1,10 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Card from "../Card/Card";
 import "./series.css";
 import { Link } from "react-router-dom";
 
-class Series extends Component{
-    constructor(props){
+class Series extends Component {
+    constructor(props) {
         super(props)
         this.state = {
             datos: [],
@@ -13,33 +13,33 @@ class Series extends Component{
     }
 
     componentDidMount() {
-    fetch (this.state.urlApi)
-    .then(response => response.json())
-    .then (data => this.setState({
-        datos: data.results
+        fetch(this.state.urlApi)
+            .then(response => response.json())
+            .then(data => this.setState({
+                datos: data.results
 
-    }))
+            }))
 
-    .catch(error => console.log ("error"))
+            .catch(error => console.log("error"))
     }
 
     render() {
-        return(
+        return (
             <div>
                 <div className="titulo-peliculas">
-                <h2 className = "titulo-series"> Popular TV shows this week</h2>
-                <Link to="/Series" className="ver-todas">Ver todas las Series</Link>
+                    <h2 className="titulo-series"> Popular TV shows this week</h2>
+                    <Link to="/Series" className="ver-todas">Ver todas las Series</Link>
                 </div>
-                <section className = "row cards" id = "movies">
+                <section className="row cards" id="movies">
                     {this.state.datos.length === 0 ? <h3> Cargando...</h3> : this.state.datos.filter((movie, i) => i < 4).map(
                         (movie) => (
                             <Card
-                                key = {movie.id}
-                                imagen = {movie.poster_path}
-                                titulo = {movie.name}
-                                descripcion = {movie.overview}
-                                id = {movie.id}
-                                tipo = "tv"
+                                key={movie.id}
+                                imagen={movie.poster_path}
+                                titulo={movie.name}
+                                descripcion={movie.overview}
+                                id={movie.id}
+                                tipo="tv"
                             />))
                     }
                 </section>
