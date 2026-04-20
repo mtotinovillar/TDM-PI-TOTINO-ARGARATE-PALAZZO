@@ -1,6 +1,6 @@
 nav {
     width: 100%;
-    padding: 10px 20px;
+    padding: 10px 10px;
     display: grid;
     grid-template-columns: 1fr;
     background-color: #eee;
@@ -14,23 +14,71 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 40px;
 }
 
 .ml-auto {
     margin-left: auto;
     display: flex;
-    gap: 30px;
 }
 
 .main-nav a {
     color: #444;
     text-decoration: none;
     font-size: 16px;
-    transition: all 0.2s ease;
+    margin-left: 40px;
 }
 
 .main-nav a:hover {
     color: #000;
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 8px 8px;
+    }
+
+    .main-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ml-auto {
+        margin-left: 0;
+        width: auto;
+        justify-content: center;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 460px) {
+    nav {
+        padding: 8px 6px;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ml-auto {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
 }

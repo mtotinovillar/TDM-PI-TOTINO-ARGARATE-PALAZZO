@@ -6,7 +6,6 @@
     padding: 10px 15px;
     border-radius: 5px;
     margin-bottom: 2px;
-    cursor: pointer;
 }
 
 .alert-warning {
@@ -25,8 +24,4 @@ input {
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 2px;
-}
-
-.btn:hover {
-    opacity: 0.85;
 }

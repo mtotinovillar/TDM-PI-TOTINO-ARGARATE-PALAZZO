@@ -1,73 +1,90 @@
 .search-form {
-    padding: .5rem 0;
+    padding: 8px 0;
     margin-bottom: 20px;
     display: grid;
     grid-template-columns: 5fr 1fr 1fr;
-    column-gap: 5px;
+    margin-bottom: 8px;
 }
 
 .search-form input, .filter-form input {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding-top: 3px;
-    vertical-align: middle;
-    line-height: 1;
-    font-size: 1rem;
+    font-size: 16px;
     padding-bottom: 4px;
 }
 
-.btn:not(:disabled):not(.disabled) {
-    cursor: pointer;
-}
 .search-form .btn-sm {
-    line-height: 1;
-    font-size: 0.9rem;
-}
-.btn-group-sm>.btn, .btn-sm {
-    padding: .25rem .5rem;
-    font-size: .875rem;
-    line-height: 1.5;
-    border-radius: .2rem;
+    font-size: 14.5px;
 }
 
-.search-form .btn-success:hover {
-    color: #fff;
-    background-color: #218838;
-    border-color: #218838;
-}
 .btn {
     display: inline-block;
     font-weight: 400;
     text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 4px;
 }
 
-button, select {
-    text-transform: none;
-}
-button, input {
-    overflow: visible;
-}
-button, input, optgroup, select, textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-}
 .search-form select {
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 3px;
+}
+
+@media (max-width: 768px) {
+    .search-form {
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+    }
+
+    .search-form input, .filter-form input {
+        font-size: 15px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .search-form .btn-sm {
+        font-size: 13px;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 15px;
+    }
+
+    .search-form select {
+        padding: 4px;
+    }
+}
+
+@media (max-width: 460px) {
+    .search-form {
+        flex-direction: column;
+        margin-bottom: 8px;
+    }
+
+    .search-form input, .filter-form input {
+        font-size: 14px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .search-form .btn-sm {
+        font-size: 13px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .search-form select {
+        padding: 5px;
+    }
 }
 
