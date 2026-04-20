@@ -36,7 +36,11 @@ class Header extends Component {
         return (
             <>
                 <h1>Udesa Movies</h1>
-                <Menu sesion={this.state.sesion} />
+                <nav>
+
+                    <Menu sesion={this.state.sesion} />
+
+                </nav>
             </>
         );
     }

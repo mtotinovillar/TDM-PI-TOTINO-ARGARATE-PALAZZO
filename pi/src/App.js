@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <div className="container">
-          <Header sesion={this.state.logeado} />
+          <Header sesion={this.state.logeado} actualizarSesion={(valor)=> this.actualizarSesion(valor)} />
   
           <Switch>
             <Route path="/" exact={true} component={Home} />

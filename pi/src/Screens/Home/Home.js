@@ -6,6 +6,7 @@ import Series from "../../components/Series/Series";
 function Home() {
   return (
     <>
+    
       <Buscador />
       <Peliculas />
       <Series />

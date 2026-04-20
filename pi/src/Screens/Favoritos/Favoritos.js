@@ -31,7 +31,7 @@ class Favoritos extends Component {
 
         this.setState({ autorizado: true });
 
-        const peliculasFav = [];
+        let peliculasFav = [];
 
         pelisParseadas.map(id =>
             fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d`)

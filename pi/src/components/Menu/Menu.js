@@ -24,7 +24,6 @@ function Menu(props) {
     }
 
     return (
-        <nav>
             <ul className="main-nav">
                 {
                     elementos.map((elemento, idx) => (
@@ -41,7 +40,6 @@ function Menu(props) {
                     ))
                 }
             </ul>
-        </nav>
     );
 }
 
