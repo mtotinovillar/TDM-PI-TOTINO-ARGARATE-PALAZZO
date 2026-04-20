@@ -12,9 +12,24 @@ class Favs extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log('this.props', this.props)
+    let clave = this.props.tipo === "movie" ? "favPelis" : "favSeries";
+    let storage = localStorage.getItem(clave);
+    let storageParseado = JSON.parse(storage);
+
+    if (storageParseado !== null) {
+      let existe = storageParseado.filter(elemento => elemento == (this.props.id));
+
+      if (existe.length > 0) {
+        this.setState({
+          esFav: true
+        });
+      }
+    }
+  }
+
   agregarFav(id) {
-
-
     let storage = localStorage.getItem("favPelis");
     let storageParseado = JSON.parse(storage);
 
