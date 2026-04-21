@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "../Card/Card";
-import "./Series.css";
+import "./series.css";
 import { Link } from "react-router-dom";
 
 class Series extends Component {
