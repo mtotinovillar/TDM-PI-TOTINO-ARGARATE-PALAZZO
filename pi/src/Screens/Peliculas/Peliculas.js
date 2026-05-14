@@ -1,90 +1,80 @@
-import React, { Component } from "react";
+import { useState, useEffect } from 'react';
 import Card from "../../components/Card/Card";
 import "./peliculas.css";
 import Filtro from "../../components/Filtro/Filtro";
 
+function Peliculas(props) {
+    const [datos, setDatos] = useState([]);
+    const [backup, setBackup] = useState([]);
+    const [page, setPage] = useState(1);
+    const [noResultados, setNoResultados] = useState(false);
 
-class Peliculas extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            datos: [],
-            backup: [],
-            page: 1,
-            noResultados: false
-        }
-    }
-
-    filtrarCard(texto) {
-        const datosFiltrados = this.state.backup.filter((elemento) =>
+    function filtrarCard(texto) {
+        const datosFiltrados = backup.filter((elemento) =>
             elemento.title.toLowerCase().includes(texto.toLowerCase())
 
         )
-
-        this.setState({
-            datos: datosFiltrados, noResultados: datosFiltrados.length === 0
-        })
+        setDatos(datosFiltrados);
+        setNoResultados(datosFiltrados.length === 0)
     }
 
-    componentDidMount() {
+
+
+    useEffect(() => {
         fetch('https://api.themoviedb.org/3/discover/movie?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d&page=1')
             .then(response => response.json())
-            .then(data => this.setState(
-                {
-                    datos: data.results,
-                    backup: data.results
-                }
-            ))
+            .then(data => {
+                setDatos(data.results);
+                setBackup(data.results);
+            })
             .catch(error => console.log(error));
-    }
-    cargarMas = () => {
-        let nuevaPage = this.state.page + 1;
+    }, [])
+    const cargarMas = () => {
+        let nuevaPage = page + 1;
         fetch(`https://api.themoviedb.org/3/discover/movie?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d&page=${nuevaPage}`)
             .then(response => response.json())
-            .then(data => this.setState(
-                {
-                    datos: this.state.datos.concat(data.results),
-                    backup: this.state.datos.concat(data.results),
-                    page: nuevaPage
-                }
-            ))
+            .then(data => {
+                setDatos(datos.concat(data.results));
+                setBackup(datos.concat(data.results));
+                setPage(nuevaPage);
+            })
             .catch(error => console.log(error));
 
     }
 
-    render() {
-        return (
-            <div >
-                <h2 className="alert alert-primary">Todas las películas</h2>
 
-                <Filtro tipo="movie" filtrarCard={(texto) => this.filtrarCard(texto)} />
+    return (
+        <div >
+            <h2 className="alert alert-primary">Todas las películas</h2>
+
+            <Filtro tipo="movie" filtrarCard={(texto) => filtrarCard(texto)} />
 
 
 
-                <section className="row cards" >
-                    {this.state.noResultados ? (
-                        <h3>No hay resultados</h3>
-                    ) : (
-                        this.state.datos.map((movie) => (
+            <section className="row cards" >
+                {noResultados ? (
+                    <h3>No hay resultados</h3>
+                ) : (
+                    datos.map((movie) => (
 
-                            <Card
-                                imagen={movie.poster_path}
-                                titulo={movie.title}
-                                descripcion={movie.overview}
-                                id={movie.id}
-                                tipo="movie"
-                            />
+                        <Card
+                            imagen={movie.poster_path}
+                            titulo={movie.title}
+                            descripcion={movie.overview}
+                            id={movie.id}
+                            tipo="movie"
+                        />
 
-                        ))
-                    )}
-                </section>
+                    ))
+                )}
+            </section>
 
-                <button onClick={this.cargarMas} className="cargarMas">Cargar más </button>
+            <button onClick={cargarMas} className="cargarMas">Cargar más </button>
 
-            </div>
-        )
-    }
+        </div>
+    )
 }
+
 
 
 export default Peliculas

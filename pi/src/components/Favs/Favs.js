@@ -1,38 +1,31 @@
-import React, { Component } from "react";
+import { useState, useEffect } from 'react';
 import "../Favs/favs.css";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
-class Favs extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      esFav: false
-    };
-  }
+function Favs(props) {
+  const [esFav, setEsFav] = useState([false])
 
-
-
-  componentDidMount() {
-    let clave = this.props.tipo === "movie" ? "favPelis" : "favSeries";
+  useEffect(() => {
+    let clave = props.tipo === "movie" ? "favPelis" : "favSeries";
     let storage = localStorage.getItem(clave);
     let storageParseado = JSON.parse(storage);
-  
+
     if (storageParseado !== null) {
-      let existe = storageParseado.filter(elemento => elemento == (this.props.id));
-  
+      let existe = storageParseado.filter(elemento => elemento == (props.id));
+
       if (existe.length > 0) {
-        this.setState({
+        setEsFav({
           esFav: true
         });
       }
     }
-  }
+  })
 
-  agregarFav(id) {
+  function agregarFav(id) {
 
-    let clave = this.props.tipo === "movie" ? "favPelis" : "favSeries";
+    let clave = props.tipo === "movie" ? "favPelis" : "favSeries";
     let storage = localStorage.getItem(clave)
     let storageParseado = JSON.parse(storage);
 
@@ -46,11 +39,11 @@ class Favs extends Component {
       localStorage.setItem(clave, storageString);
     }
 
-    this.setState({ esFav: true });
+    setEsFav({ esFav: true });
   }
 
-  sacarFav(id) {
-    let clave = this.props.tipo === "movie" ? "favPelis" : "favSeries";
+  function sacarFav(id) {
+    let clave = props.tipo === "movie" ? "favPelis" : "favSeries";
     let storage = localStorage.getItem(clave);
     let storageParseado = JSON.parse(storage);
 
@@ -60,34 +53,34 @@ class Favs extends Component {
       localStorage.setItem(clave, storageString);
     }
 
-    this.setState({ esFav: false });
+    setEsFav({ esFav: false });
   }
 
-  render() {
 
-    console.log(this.props);
-    
+  console.log(this.props);
 
-    let sesion = cookies.get("user-auth-cookie");
 
-    if (!sesion) {
-      return null;
-    }
+  let sesion = cookies.get("user-auth-cookie");
 
-    return (
-      <button
-        className={this.state.esFav ? "favorito activo" : "favorito"}
-        onClick={() =>
-          this.state.esFav
-            ? this.sacarFav(this.props.id)
-            : this.agregarFav(this.props.id)
-        }
-      >
-        ♥
-      </button>
-
-    );
+  if (!sesion) {
+    return null;
   }
+  return (
+
+
+    <button
+      className={esFav ? "favorito activo" : "favorito"}
+      onClick={() =>
+        esFav
+          ? this.sacarFav(props.id)
+          : this.agregarFav(props.id)
+      }
+    >
+      ♥
+    </button>
+
+  );
 }
+
 
 export default Favs;
