@@ -1,27 +1,31 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import './menu.css';
 import { Link } from 'react-router-dom';
 
 function Menu(props) {
-
-    let elementos = [
+    const base = [
         { name: "Home", path: "/" },
         { name: "Películas", path: "/Peliculas" },
-        { name: "Series", path: "/Series" }
-    ];
+        { name: "Series", path: "/Series" }]
+    const [elementos, setElementos] = useState([])
 
-    if (props.sesion) {
-        elementos.push(
-            { name: "Favoritas", path: "/favoritos" },
-            { name: "Logout", path: "/logout" });
+    useEffect(() => {
+        if (props.sesion) {
+            setElementos([
+                ...base,
+                { name: "Favoritas", path: "/favoritos" },
+                { name: "Logout", path: "/logout" }
 
-        console.log("sesion:", props.sesion);
-    } else {
-        elementos.push(
-            { name: "Registro", path: "/register" },
-            { name: "Login", path: "/login" }
-        );
-    }
+            ])
+        } else {
+            setElementos([
+                ...base,
+                { name: "Registro", path: "/register" },
+                { name: "Login", path: "/login" }
+            ]);
+        }
+    }, [props.sesion]);
 
     return (
         <ul className="main-nav">

@@ -1,49 +1,36 @@
-import React, { Component } from "react";
+import { useState, useEffect } from "react";
 import Menu from "../Menu/Menu";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
-class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sesion: cookies.get("user-auth-cookie")
-        };
-    }
-    componentDidMount() {
-        let sesion = cookies.get("user-auth-cookie");
+function Header(props) {
+    const [sesion, setSesion] = useState(cookies.get("user-auth-cookie"))
 
-        this.setState({
-            sesion: sesion
-        })
-        console.log('header didMount')
-    }
+    useEffect(() => {
+        let sesionCookie = cookies.get("user-auth-cookie")
+        setSesion(sesionCookie)
+        console.log("Header didMount")
 
-    componentDidUpdate() {
-        console.log('header didUpdate')
+    }, [])
 
-        let sesion = cookies.get("user-auth-cookie");
-
-        if (sesion !== this.state.sesion) {
-            this.setState({
-                sesion: sesion
-            });
+    useEffect(() => {
+        let sesionCookie = cookies.get("user-auth-cookie")
+        if (sesion != sesionCookie) {
+            setSesion(sesionCookie)
         }
-    }
+    }, [sesion])
 
-    render() {
-        return (
-            <>
-                <h1>Udesa Movies</h1>
-                <nav>
+    return (
+        <>
+            <h1>Udesa Movies</h1>
+            <nav>
 
-                    <Menu sesion={this.state.sesion} />
+                <Menu sesion={props.sesion} />
 
-                </nav>
-            </>
-        );
-    }
+            </nav>
+        </>
+    );
 }
 
-export default Header;
+export default Header
