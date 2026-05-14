@@ -1,49 +1,44 @@
-import React, { Component } from 'react';
+import { useState, useEffect, useRef, useContext, use } from "react";
 import Card from "../../components/Card/Card";
 
-class Resultados extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            resultados: [],
-            cargando: true
-        };
-    }
-    componentDidMount() {
-        const tipo = this.props.match.params.tipo;
-        const query = this.props.match.params.busqueda;
+function Resultados(props) {
+    const [resultados, setResultados] = useState([]);
+    const [cargando, setCargando] = useState(true);
 
+
+
+    useEffect(() => {
+        const query = props.match.params.busqueda
+        const tipo = props.match.params.tipo
         fetch(`https://api.themoviedb.org/3/search/${tipo}?api_key=58a3f6c11dcbcb7cce9ae7dea3f91e3d&query=${query}`)
             .then(response => response.json())
-            .then(data => this.setState({
-                resultados: data.results,
-                cargando: false
-            }))
+            .then(data => setResultados(data.results))
             .catch(error => {
                 console.log(error)
-                this.setState({
-                    cargando: false,
-                    resultados: []
-                })
-            })
-    }
-    render() {
+                setResultados([])
+            }, setCargando(false))
+})
+
+
+
+
+
         return (
             <div>
-                <h2>Resultados de: {this.props.match.params.busqueda}</h2>
+                <h2>Resultados de: {props.match.params.busqueda}</h2>
 
                 <section className="row cards">
                     {this.state.cargando ? (
                         <h3>Cargando...</h3>
-                    ) : this.state.resultados.length > 0 ? (
-                        this.state.resultados.map((item, i) => (
+                    ) : resultados.length > 0 ? (
+                        resultados.map((item, i) => (
                             <Card
                                 key={i}
                                 imagen={item.poster_path}
-                                titulo={this.props.match.params.tipo === "movie" ? item.title : item.name}
+                                titulo={props.match.params.tipo === "movie" ? item.title : item.name}
                                 descripcion={item.overview}
                                 id={item.id}
-                                tipo={this.props.match.params.tipo}
+                                tipo={props.match.params.tipo}
                             />
                         ))
                     ) : (
@@ -54,5 +49,6 @@ class Resultados extends Component {
             </div>
         )
     }
-}
+
+
 export default Resultados
