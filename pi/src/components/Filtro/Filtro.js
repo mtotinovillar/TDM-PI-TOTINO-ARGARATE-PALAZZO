@@ -1,48 +1,44 @@
-import React, { Component } from "react";
+import { useState, useEffect, useRef, useContext, use } from "react";
 import "./filtro.css";
 
-class Filtro extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            verMas: false,
-            search: [],
-            noResultados: false
-        };
-    }
+    function Filtro (props){
+        const [search, setSearch] = useState([]);
+        const [verMas, setVerMas] = useState(false);
+        const [noResultados, setNoResultados] = useState(false);
+            
+        
 
-    evitarSubmit(event) {
+    function evitarSubmit(event) {
         event.preventDefault();
     }
 
-    controlarCambios(event) {
+    function controlarCambios(event) {
         const texto = event.target.value;
 
-        this.setState(
+        setSearch(
             { search: texto },
             () => {
-                if (this.props.filtrarCard) {
-                    this.props.filtrarCard(texto);
+                if (props.filtrarCard) {
+                    props.filtrarCard(texto);
                 }
             }
         );
     }
 
-    render() {
+    
         return (
             <div className="filtro">
-                <form className="search-form" onSubmit={(event) => this.evitarSubmit(event)}>
+                <form className="search-form" onSubmit={(event) => evitarSubmit(event)}>
                     <input
                         type="text"
                         name="busqueda"
-                        placeholder={`Filtrar ${this.props.tipo}`}
-                        value={this.state.search}
-                        onChange={(event) => this.controlarCambios(event)}
+                        placeholder={`Filtrar ${props.tipo}`}
+                        value={search}
+                        onChange={(event) => controlarCambios(event)}
                     />
                 </form>
             </div>
         );
     }
-}
 
 export default Filtro;
